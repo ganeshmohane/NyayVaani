@@ -12,48 +12,49 @@ st.sidebar.markdown('<div style="text-align: center;"><span style="font-size: 10
 st.sidebar.markdown('<div style="text-align: center;"><span style="font-size: 2.5rem;">न्यायवाणी</span></div>', unsafe_allow_html=True)
 st.sidebar.markdown('<div style="text-align: center;"><span style="font-size: 1.5rem;">"An AI LawBot: He Answers Your Legal Questions..."</span></div>', unsafe_allow_html=True)
 
-# Function to create a download link for the PowerPoint or any file
-def create_download_link(file_path, link_text):
+# Function to create a download link for a file
+def create_download_link(file_path):
     with open(file_path, "rb") as f:
         data = f.read()
     b64 = base64.b64encode(data).decode('utf-8')
-    href = f'<a href="data:application/octet-stream;base64,{b64}" download="{file_path}">{link_text}</a>'
-    return href
+    return f"data:application/octet-stream;base64,{b64}"
 
-# Provide a download link for the PPT
-st.markdown("### Download the presentation:")
-ppt_link = create_download_link("D:\Desktop\PROJs\न्यायवाणी\AI-LawBot\Docs\न्यायवाणी.pdf", "Click here to download the PPT presentation")
-st.markdown(ppt_link, unsafe_allow_html=True)
+# Section for downloading documents
+st.markdown("### Downloadable Documents")
 
-# Function to load images as base64 and display them with explanations and download buttons
-def load_image_base64(image_path):
-    """Loads an image and encodes it in base64 for HTML display."""
-    with open(image_path, "rb") as img_file:
-        return base64.b64encode(img_file.read()).decode("utf-8")
+# Presentation PDF
+st.markdown("#### LawBot Presentation")
+st.markdown("This presentation provides an overview of the LawBot project, including its features, objectives, and implementation details. It serves as an introductory resource for understanding how the LawBot operates.")
+if st.button("Download the Presentation PDF"):
+    ppt_link = create_download_link("D:\Desktop\PROJs\न्यायवाणी\AI-LawBot\Docs\न्यायवाणी.pdf")
+    st.markdown(f'<a href="{ppt_link}" download="न्यायवाणी.pdf">Click here to download the presentation</a>', unsafe_allow_html=True)
 
-def image_with_explanation(image_path, explanation, dataset_path, dataset_name):
-    img_base64 = load_image_base64(image_path)
-    st.markdown(
-        f"""
-        <div style="text-align: center;">
-            <img src="data:image/png;base64,{img_base64}" style="width:70%;">
-        </div>
-        """,
-        unsafe_allow_html=True
-    )
-    st.markdown(f"**{explanation}**")
-    
-    # Create a download button for the dataset
-    dataset_link = create_download_link(dataset_path, f"Download {dataset_name}")
-    st.markdown(dataset_link, unsafe_allow_html=True)
-    st.markdown("---")
+st.markdown("---")  # Separator
 
-# Show images with explanations and download buttons below
-st.markdown("### Explore Legal Topics:")
-image_with_explanation('./images/indian_constitution.jpeg', "Indian Constitution: Fundamental principles that govern India.", 'path_to_dataset_1.csv', 'Indian Constitution Dataset')
-image_with_explanation('./images/Equality.png', "Equality Rights: Learn about the rights ensuring equality for all citizens.", 'path_to_dataset_2.csv', 'Equality Rights Dataset')
-image_with_explanation('./images/IPC.png', "Indian Penal Code: A comprehensive code intended to cover all substantive aspects of criminal law.", 'path_to_dataset_3.csv', 'Indian Penal Code Dataset')
-image_with_explanation('./images/image.png', "Legal Procedures: Overview of the key procedures in the legal system.", 'path_to_dataset_4.csv', 'Legal Procedures Dataset')
+# IPC Data CSV
+st.markdown("#### IPC Data CSV")
+st.markdown("This CSV file contains cleaned data from the Indian Penal Code (IPC). It includes various sections, articles, and relevant details useful for legal analysis and understanding.")
+if st.button("Download IPC Data CSV"):
+    ipc_data_link = create_download_link("D:\Desktop\PROJs\न्यायवाणी\AI-LawBot\Data\cleaned_ipc_data.csv")
+    st.markdown(f'<a href="{ipc_data_link}" download="cleaned_ipc_data.csv">Click here to download IPC Data</a>', unsafe_allow_html=True)
+
+st.markdown("---")  # Separator
+
+# Questions & Answers CSV
+st.markdown("#### Questions & Answers CSV")
+st.markdown("This file contains a collection of question-answer pairs related to legal topics that the LawBot can use to provide accurate responses to user queries.")
+if st.button("Download Q&A CSV"):
+    qa_data_link = create_download_link("D:\Desktop\PROJs\न्यायवाणी\AI-LawBot\Data\lawbot_qa_pairs.csv")
+    st.markdown(f'<a href="{qa_data_link}" download="lawbot_qa_pairs.csv">Click here to download Q&A Data</a>', unsafe_allow_html=True)
+
+st.markdown("---")  # Separator
+
+# IPC PDF
+st.markdown("#### IPC Document")
+st.markdown("The Indian Penal Code (IPC) document provides comprehensive coverage of criminal law in India. This PDF outlines various offenses and penalties as defined in the IPC.")
+if st.button("Download IPC Document"):
+    ipc_pdf_link = create_download_link("Data/Indian Penal Codes.pdf")
+    st.markdown(f'<a href="{ipc_pdf_link}" download="Indian_Penal_Codes.pdf">Click here to download IPC Document</a>', unsafe_allow_html=True)
 
 # Footer content
 st.markdown("---")
