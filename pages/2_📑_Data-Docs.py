@@ -19,6 +19,25 @@ def create_download_link(file_path):
     b64 = base64.b64encode(data).decode('utf-8')
     return f"data:application/octet-stream;base64,{b64}"
 
+
+st.markdown("### Little Thoughts About IPC")
+
+st.markdown("""
+The Indian Penal Code (IPC) is a comprehensive statute that outlines the criminal laws in India. Enacted in 1860, the IPC serves as the primary source of criminal law and defines various offenses and their corresponding punishments.
+
+**Why is IPC Important?**
+- **Legal Framework:** It provides a structured legal framework to ensure justice and maintain public order.
+- **Deterrent Effect:** By outlining penalties for offenses, it acts as a deterrent against criminal activities.
+- **Protection of Rights:** The IPC protects individual rights by defining what constitutes a crime and ensuring that offenders are penalized.
+
+**Why Do We Need the IPC?**
+The IPC is essential for the rule of law in society. It helps to:
+- Establish clear definitions of criminal behavior.
+- Ensure uniformity in legal proceedings.
+- Facilitate the prosecution of offenders and protect the rights of victims.
+""")
+
+st.markdown("-------")
 # Section for downloading documents
 st.markdown("### Downloadable Documents")
 

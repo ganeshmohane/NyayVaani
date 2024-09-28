@@ -22,7 +22,7 @@ def get_ipc_info(ipc_data, user_query):
                 )
             return "\n".join(details)
         else:
-            return "Sorry, I couldn't find that IPC code in the descriptions."
+            return "Sorry, I couldn't find valid IPC code in the descriptions."
     return None
 
 # Streamlit UI
